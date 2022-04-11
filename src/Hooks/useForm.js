@@ -22,7 +22,7 @@ const useForm = (type) =>{
         // verifica se foi passado o tipo
         if(type === false){
             return true;
-        }else
+        }
 
         if(value.length === 0){
             setError('Prencha um valor');

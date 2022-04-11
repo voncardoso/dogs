@@ -6,9 +6,10 @@ const Input = ({label, type, name, value, onChange, error, onBlur}) =>{
             <label htmlFor={name} className={style.label}>{label}</label>
             <input 
                 id={name} 
+                name={name}
+                className={style.input}
                 type={type} 
                 value={value}
-                className={style.input}
                 onChange={onChange} 
                 onBlur={onBlur}
             />
