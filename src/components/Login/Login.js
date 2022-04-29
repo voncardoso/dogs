@@ -1,25 +1,30 @@
-import { Routes, Route, Navigate} from "react-router-dom";
+import { Routes, Route, useNavigate} from "react-router-dom";
 import LoginForm from "./LoginForm";
 import LoginCriar from "./LoginCriar";
 import LoginPasswordLost from "./LoginPasswordLost";
 import LoginPasswordReset from "./LoginPasswordReset";
 import { useContext } from "react";
 import { UserContex } from "../../UserContext";
-const Login = () =>{
-    const {login} = useContext(UserContex)
+import styles from './Login.module.css'
 
+
+const Login = () =>{
+    const {login} = useContext(UserContex);
+    const navigate = useNavigate()
     if(login === true){
-        <Navigate to="conta"/>
+        navigate("/conta")
     }
     return(
-        <div>
-            <Routes>
-                <Route path="/" element={<LoginForm />}/>
-                <Route path="criar" element={<LoginCriar />}/>
-                <Route path="perdeu" element={<LoginPasswordLost />}/>
-                <Route path="resetar" element={<LoginPasswordReset />}/>
-            </Routes>
-        </div>
+        <section className={styles.login}>
+            <div className={styles.forms}>
+                <Routes>
+                    <Route path="/" element={<LoginForm />}/>
+                    <Route path="criar" element={<LoginCriar />}/>
+                    <Route path="perdeu" element={<LoginPasswordLost />}/>
+                    <Route path="resetar" element={<LoginPasswordReset />}/>
+                </Routes>
+            </div>
+        </section>
     )
 }
 

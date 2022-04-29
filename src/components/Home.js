@@ -1,6 +1,10 @@
+import Feed from './Feed/Feed';
+
 const Home = () =>{
     return(
-        <p>Home</p>
+        <section className='container mainContainer'>
+            <Feed/>
+        </section>
     )
 }
 
