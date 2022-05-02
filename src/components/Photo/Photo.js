@@ -1,0 +1,7 @@
+const Photo = () =>{
+    return(
+        <h1></h1>
+    )
+}
+
+export default Photo;
