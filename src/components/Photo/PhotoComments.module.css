@@ -1,0 +1,12 @@
+.comments{
+    overflow-y: auto;
+    /*  word-break se a palavra fica muito grande é so quebrar ela*/
+    word-break: break-word;
+    padding: 0 2rem;
+}
+
+
+.comments li{
+    margin-bottom: .5rem;
+    line-height: 1.2;
+}
