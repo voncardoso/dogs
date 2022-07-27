@@ -22,9 +22,6 @@ const LoginForm = () => {
 
     
     // função para pegar dados do usuario
-
-
-    
     async function handleSubmit(event){
         event.preventDefault();
 

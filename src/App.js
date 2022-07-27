@@ -7,13 +7,18 @@ import Home from './components/Home';
 import Login from './components/Login/Login'; 
 import User from './components/User/User';
 import {UserStorage} from './UserContext';
+import Photo from './components/Photo/Photo';
+import UserProfile from './components/User/UserProfile';
+import NotFound from './components/NotFound';
+
 
 function App() {
   return (
-    <div>
+    <div className='app'>
       <BrowserRouter>
       <UserStorage>
         <Header/>
+        <main>
         <Routes>
           <Route path='/' element={<Home />}/>
           {/** /login/* o asteristico dentro da rota especifica que exiestes subrotas */}
@@ -24,8 +29,13 @@ function App() {
                 <User/>
               </ProtectedRouter>}
             />
+            <Route path='foto/:id' element={<Photo />}/>
+            <Route path='perfil/:user' element={<UserProfile />}/>
+            <Route path='*' element={<NotFound />}/>
         </Routes>
+        </main>
         <Footer/>
+        
         </UserStorage>
       </BrowserRouter>
     </div>

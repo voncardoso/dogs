@@ -80,11 +80,6 @@ export function PHOTOS_GET({page, total, user}){
 export function PHOTO_GET(id){
     return{
         url: `${API_URL}/api/photo/${id}`,
-        options: {
-            method: 'GET',
-            // se alguem posta uma foto novo isssa faz com que não tenha cache
-            cache: 'no-store'
-        },
     };
 }
 
@@ -108,6 +103,44 @@ export function PHOTO_DELETE(id){
         url: `${API_URL}/api/photo/${id}`,
         options: {
             method: 'DELETE',
+            headers: {
+                Authorization: 'Bearer' + window.localStorage.getItem('token'),
+            },
+        },
+    };
+}
+
+export function PASSWORD_LOST(body){
+    return{
+        url: API_URL + '/api/password/lost',
+        options: {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        },
+    };
+}
+
+export function PASSWORD_RESET(body){
+    return{
+        url: API_URL + '/api/password/reset',
+        options: {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        },
+    };
+}
+
+export function STATS_GET(){
+    return{
+        url: API_URL + '/api/stats',
+        options: {
+            method: 'GET',
             headers: {
                 Authorization: 'Bearer' + window.localStorage.getItem('token'),
             },

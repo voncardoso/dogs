@@ -7,6 +7,7 @@ import Error from '../Help/Error'
 import { useEffect, useState } from 'react'
 import { PHOTO_POST } from '../../api'
 import { useNavigate } from 'react-router-dom'
+import Head from '../Help/Head'
 
 
 const UserPhotoPost = () =>{
@@ -16,7 +17,7 @@ const UserPhotoPost = () =>{
     const [img, setImg] = useState({});
     const {data, error, loading, request} = useFetch();
     const navigate = useNavigate();
-
+    let teste;
     useEffect(()=>{
         console.log('teste')
         if(data){
@@ -33,12 +34,13 @@ const UserPhotoPost = () =>{
         formData.append('nome', nome.value);
         formData.append('peso', peso.value);
         formData.append('idade', idade.value);
-
+        teste = formData
         const token = window.localStorage.getItem('token');
         const {url, options} = PHOTO_POST(formData, token);
         request(url, options);
+        
     }
-
+    console.log('formdata',teste);
     function handleImgChange({target}){
         setImg({
             preview: URL.createObjectURL(target.files[0]),
@@ -49,6 +51,7 @@ const UserPhotoPost = () =>{
     return(
 
         <section className={`${style.photoPost} animeLeft`}>
+             <Head title="" description="Home do site dogs"/>
             <form onSubmit={handleSubmit}>
                 <Input label="Nome" type="text" name="nome" {...nome}/>
                 <Input label="Peso" type="text" name="peso" {...peso}/>

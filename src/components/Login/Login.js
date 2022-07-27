@@ -6,6 +6,7 @@ import LoginPasswordReset from "./LoginPasswordReset";
 import { useContext } from "react";
 import { UserContex } from "../../UserContext";
 import styles from './Login.module.css'
+import NotFound from "../NotFound";
 
 
 const Login = () =>{
@@ -14,6 +15,7 @@ const Login = () =>{
     if(login === true){
         navigate("/conta")
     }
+    
     return(
         <section className={styles.login}>
             <div className={styles.forms}>
@@ -22,6 +24,7 @@ const Login = () =>{
                     <Route path="criar" element={<LoginCriar />}/>
                     <Route path="perdeu" element={<LoginPasswordLost />}/>
                     <Route path="resetar" element={<LoginPasswordReset />}/>
+                    <Route path='*' element={<NotFound />}/>
                 </Routes>
             </div>
         </section>
